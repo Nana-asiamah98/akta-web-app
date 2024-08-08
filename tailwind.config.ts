@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss"
 
+/** @type {import('tailwindcss').Config} */
+
 const config = {
   darkMode: ["class"],
   content: [
