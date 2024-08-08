@@ -1,15 +1,19 @@
+'use client'
 import {
   Bell,
   ChevronDown,
+  Circle,
   CirclePlus,
   File,
   Folder,
   Home,
   LineChart,
+  Mic,
   Package,
   Package2,
   Plus,
   ShoppingCart,
+  User,
   Users,
 } from "lucide-react";
 import Link from "next/link";
@@ -117,16 +121,52 @@ const Sidebar = () => {
               </AccordionItem>
             </Accordion>
             <div className="flex items-start gap-4 text-[17px] text-[#0D548A]">
-                <Plus color="#0D548A"/> Add Project
+              
+              <Button onClick={() => alert("Favorites Button Clicked")} className="flex  gap-4 cursor-pointer hover:cursor-pointer flex-row text-[17px] justify-between bg-transparent hover:bg-transparent text-black "><Plus color="#0D548A" /> Add Project</Button>
+
             </div>
           </nav>
           <nav className="grid items-start p-7 h-auto border-b text-sm font-medium lg:px-4 space-y-5">
             <div className="flex flex-col  w-full gap-4 text-[17px] text-[#0D548A]">
-               <div className=" flex flex-row justify-between ">
-               <span>Favorites</span> <Plus/>
-               </div>
+                <Button onClick={() => alert("Favorites Button Clicked")} className="flex cursor-pointer hover:cursor-pointer flex-row text-[17px] justify-between bg-transparent hover:bg-transparent text-black "><span>Favorites</span> <Plus /></Button>
+              <span className="flex gap-3  text-sm">
+                <Circle  size={16} strokeWidth={3} absoluteStrokeWidth /> Health
+              </span>
+              <span className="flex gap-3 text-sm">
+              <Circle size={16} color="#636363" strokeWidth={3} absoluteStrokeWidth />Finance
+              </span>
+              <span className="flex gap-3 text-sm">
+                <Circle  size={16} color="#27AE60" strokeWidth={3} absoluteStrokeWidth /> Agriculture
+              </span>
+              <span className="flex gap-3 text-sm">
+                <Circle  size={16} color="#F2994A" strokeWidth={3} absoluteStrokeWidth /> Health
+              </span>
             </div>
           </nav>
+        </div>
+        <div className="flex flex-row   h-14 items-center  px-6 lg:h-[90px] lg:px-6">
+          <div className="flex flex-col w-full space-y-6 mb-16">
+            <div className="flex flex-row justify-between w-full">
+              <div className=" flex justify-start gap-1">
+                <User />
+                <span className="font-semibold">Profile</span>
+              </div>
+              <span className="px-2 bg-[#0D548A] text-white rounded-sm">3</span>
+            </div>
+            <div className="flex flex-row justify-between w-full">
+              <div className=" flex justify-start gap-1">
+                <Bell />
+                <span className="font-semibold">Notifications</span>
+              </div>
+              <span className="px-2 bg-[#0D548A] text-white rounded-sm">1</span>
+            </div>
+            <div className="flex flex-row justify-between w-full">
+              <div className=" flex justify-start gap-1 text-red-500">
+                <Mic />
+                <span className="font-semibold ">Speak To Experts</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="flex flex-row gap-8 h-14 items-center border-t px-6 lg:h-[90px] lg:px-6">
           <Avatar>
