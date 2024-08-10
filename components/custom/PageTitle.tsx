@@ -1,7 +1,6 @@
 interface IPageTitle {
   pageTitle: string;
 }
-
 const PageTitle = ({ pageTitle }: IPageTitle) => {
   return (
     <div className="flex items-center ">
