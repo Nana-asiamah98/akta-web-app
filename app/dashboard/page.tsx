@@ -1,12 +1,11 @@
+import PageTitle from "@/components/custom/PageTitle";
 import { Button } from "@/components/ui/button";
 import React from "react";
 
 const Dashboard = () => {
   return (
     <>
-      <div className="flex items-center">
-        <h1 className="text-lg font-semibold md:text-2xl">Inventory</h1>
-      </div>
+      <PageTitle pageTitle="Projects"/>
       <div
         className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
         x-chunk="dashboard-02-chunk-1"

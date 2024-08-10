@@ -5,6 +5,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/custom/Navbar";
 import Sidebar from "@/components/custom/Sidebar";
+import PageTitle from "@/components/custom/PageTitle";
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -27,9 +28,9 @@ export default function RootLayout({
         )}
       >
         <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-          <Sidebar/>
+          <Sidebar />
           <div className="flex flex-col">
-          <Navbar/>
+            <Navbar />
             <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
               {children}
             </main>
