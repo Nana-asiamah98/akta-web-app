@@ -59,6 +59,22 @@
   }
 }
 
+.activeThumbsUpIcon {
+  fill: #fff;
+  path {
+    stroke: #0d548a;
+  }
+}
+
+.thumbsUpIcon {
+  &:hover {
+    fill: aliceblue;
+    path {
+      stroke: #0d548a;
+    }
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
