@@ -3,7 +3,14 @@ import PageTitle from "@/components/custom/PageTitle";
 import { DashbardFolderCards } from "@/components/custom/dashboard/DashbardFolderCards";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { File, Folder, TabletIcon, TrendingUp } from "lucide-react";
+import {
+  File,
+  Folder,
+  Tablet,
+  TabletIcon,
+  TabletsIcon,
+  TrendingUp,
+} from "lucide-react";
 import {
   Label,
   PolarGrid,
@@ -20,6 +27,7 @@ import {
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { DashboardMinorCards } from "@/components/custom/dashboard/DashboardMinorCards";
 import { SurveyCards } from "@/components/custom/survey/SurveyCards";
+import Image from "next/image";
 const chartData = [
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
 ];
@@ -132,6 +140,16 @@ const Dashboard = () => {
                                 30/40 Surveys Completed
                               </span>
                             </div>
+
+                            <>
+                              <Image
+                                src={`/assets/TabletIcon.png`}
+                                // className="w-40 h-40"
+                                width={100}
+                                height={100}
+                                alt="TabletIcon"
+                              />
+                            </>
                           </CardContent>
                         </Card>
                         <Card className="border-0">
