@@ -9,6 +9,7 @@ import { NEXT_STATE, PREVIOUS_STATE } from "@/utils/AppConstants";
 import { CircleArrowLeft, CircleArrowRight, Clipboard } from "lucide-react";
 import { useState } from "react";
 import { AktaLogo } from "@/components/customIcons/AktaLogo";
+import { UserRegisterAuthForm } from "@/components/custom/auth/user-register-form-auth";
 
 interface IJumbotron {
   key: string;
@@ -131,8 +132,8 @@ export default function AuthenticatedLogin() {
             />
           </div>
         </div>
-        <div className=" lg:p-8 lg:w-[50%] flex flex-col">
-          <UserAuthForm />
+        <div className=" lg:p-8 lg:w-[50%] mt-5 lg:mt-0 flex flex-col">
+          <UserRegisterAuthForm />
         </div>
       </div>
     </>
