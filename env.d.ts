@@ -17,8 +17,9 @@ declare global {
       NEXT_PUBLIC_SI_API_URL: string;
       NEXT_PUBLIC_HELPDESK_API_URL: string;
       NEXT_PUBLIC_CP_ADMIN: string;
-      NEXT_PUBLIC_CP_MAIN_ADMIN: string;
-      NEXT_PUBLIC_CP_OPERATIONAL: string;
+      NEXT_PUBLIC_KEYCLOAK_SCOPE: string;
+      NEXT_PUBLIC_KEYCLOAK_GRANT_TYPE: string;
+      NEXT_PUBLIC_KEYCLOAK_CLIENT_ID: string;
     }
   }
 }

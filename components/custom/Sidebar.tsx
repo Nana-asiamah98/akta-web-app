@@ -8,48 +8,61 @@ import {
   Folder,
   Mic,
   Plus,
-  Power,
   User,
 } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@radix-ui/react-accordion";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
-import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AktaLogo } from "../customIcons/AktaLogo";
-import { Label } from "@radix-ui/react-label";
-import { DialogClose } from "@radix-ui/react-dialog";
 import { UserProfileDropDown } from "./userprofiledropdown/user-profile-dropdown";
+import {
+  IKeycloakUserInfoResponse,
+  getUserInfo,
+  logoutKeycloakSession,
+} from "@/services/keycloak-services";
+import { getSession, signOut, useSession } from "next-auth/react";
+import { ICustomRESTResponse } from "@/lib/interfaces";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
-  const [position, setPosition] = React.useState("bottom");
+  const { data: session } = useSession();
+  const router = useRouter();
+  const [userInfo, setUserInfo] = useState<
+    IKeycloakUserInfoResponse | undefined
+  >();
 
-  const userAuthLogout = (state: boolean): void => {
-    alert(state ? "Logout" : "Stay")
+  useEffect(() => {
+    getUserInfo(session?.tokens?.access_token).then(
+      (response: ICustomRESTResponse) => {
+        if (!response.isError) {
+          const { data } = response;
+          setUserInfo(data);
+        }
+      }
+    );
+  }, [session]);
+
+  const userAuthLogout = async (state: boolean) => {
+    logoutKeycloakSession(session?.tokens?.refresh_token).then(
+      (response: ICustomRESTResponse) => {
+        if (!response.isError) {
+          signOut({ redirect: false, callbackUrl: "/" }).then(
+            (value: any) => {
+              router.push(value?.url);
+            }
+          );
+        }
+        console.log("Failed :: ", { response });
+      }
+    );
   };
   return (
     <div className="hidden border-r bg-muted/40 md:block">
@@ -208,7 +221,10 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        <UserProfileDropDown approveLogout={userAuthLogout} />
+        <UserProfileDropDown
+          userInfo={userInfo}
+          approveLogout={userAuthLogout}
+        />
       </div>
     </div>
   );

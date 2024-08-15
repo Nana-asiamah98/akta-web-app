@@ -1,11 +1,16 @@
-export interface IKeycloakResponse {
-  access_token: string;
-  expires_in: number;
-  refresh_expires_in: number;
-  refresh_token: string;
-  token_type: string;
-  id_token: string;
-  "not-before-policy": number;
-  session_state: string;
-  scope: string;
+
+
+export interface ICustomRESTResponse {
+  status?: number;
+  timestamp?: Date;
+  isError?: boolean;
+  data: any;
+}
+
+export interface IResponseDTO {
+  timestamp: string;
+  status: number;
+  message: string;
+  requestId: string;
+  data: any;
 }

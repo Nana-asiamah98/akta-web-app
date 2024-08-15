@@ -1,7 +1,11 @@
+import {
+  IKeycloakResponse,
+  getKeycloakAccessToken,
+} from "@/services/keycloak-services";
 import axios from "axios";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { IKeycloakResponse } from "./interfaces";
+import { ICustomRESTResponse } from "./interfaces";
 
 export const authOptions: NextAuthOptions = {
   debug: true,
@@ -34,22 +38,13 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         console.log({ credentials });
         const { username, password }: any = credentials;
-        const URL =
-          process.env.NEXT_PUBLIC_KEYCLOAK_BASE_URL +
-          `/${process.env.NEXT_PUBLIC_KEYCLOAK_REALM}/protocol/openid-connect/token`;
-        const response = await axios.post(
-          URL,
-          new URLSearchParams({
-            grant_type: "password",
-            client_id: "akta-web-ui",
-            scope: "email openid",
-            username: username,
-            password: password,
-          })
-        );
-        if (response?.status === 200) {
+        const userInfo: ICustomRESTResponse = await getKeycloakAccessToken({
+          username,
+          password,
+        });
+        if (!userInfo?.isError) {
           console.debug("Success");
-          const { data } = response;
+          const { data } = userInfo;
           const finalResponse: any = data;
           return finalResponse;
         }
