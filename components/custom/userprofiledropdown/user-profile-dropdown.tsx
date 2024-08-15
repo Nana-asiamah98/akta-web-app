@@ -34,7 +34,8 @@ interface ILogout {
 export const UserProfileDropDown = ({ approveLogout, userInfo }: ILogout) => {
   return (
     <>
-      <Dialog>
+      <Dialog >
+        
         <DropdownMenu>
           <DropdownMenuTrigger className="flex flex-row gap-8 h-14 items-center border-t px-6 lg:h-[90px] lg:px-6">
             <Avatar>
@@ -67,7 +68,7 @@ export const UserProfileDropDown = ({ approveLogout, userInfo }: ILogout) => {
             </DialogTrigger>
           </DropdownMenuContent>
         </DropdownMenu>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="!backdrop-blur sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Logout {userInfo?.given_name}</DialogTitle>
             <DialogDescription>Do you want to logout?</DialogDescription>
