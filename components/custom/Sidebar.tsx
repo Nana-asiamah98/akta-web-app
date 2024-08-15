@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   Bell,
   ChevronDown,
@@ -6,37 +6,51 @@ import {
   CirclePlus,
   File,
   Folder,
-  Home,
-  LineChart,
   Mic,
-  Package,
-  Package2,
   Plus,
-  ShoppingCart,
+  Power,
   User,
-  Users,
 } from "lucide-react";
 import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { AktaLogo } from "../customIcons/AktaLogo";
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@radix-ui/react-accordion";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
+import React from "react";
+import { AktaLogo } from "../customIcons/AktaLogo";
+import { Label } from "@radix-ui/react-label";
+import { DialogClose } from "@radix-ui/react-dialog";
+import { UserProfileDropDown } from "./userprofiledropdown/user-profile-dropdown";
 
 const Sidebar = () => {
+  const [position, setPosition] = React.useState("bottom");
+
+  const userAuthLogout = (state: boolean): void => {
+    alert(state ? "Logout" : "Stay")
+  };
   return (
     <div className="hidden border-r bg-muted/40 md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
@@ -121,25 +135,51 @@ const Sidebar = () => {
               </AccordionItem>
             </Accordion>
             <div className="flex items-start gap-4 text-[17px] text-[#0D548A]">
-              
-              <Button onClick={() => alert("Favorites Button Clicked")} className="flex  gap-4 cursor-pointer hover:cursor-pointer flex-row text-[17px] justify-between bg-transparent hover:bg-transparent text-black "><Plus color="#0D548A" /> Add Project</Button>
-
+              <Button
+                onClick={() => alert("Favorites Button Clicked")}
+                className="flex  gap-4 cursor-pointer hover:cursor-pointer flex-row text-[17px] justify-between bg-transparent hover:bg-transparent text-black "
+              >
+                <Plus color="#0D548A" /> Add Project
+              </Button>
             </div>
           </nav>
           <nav className="grid items-start p-7 h-auto border-b text-sm font-medium lg:px-4 space-y-5">
             <div className="flex flex-col  w-full gap-4 text-[17px] text-[#0D548A]">
-                <Button onClick={() => alert("Favorites Button Clicked")} className="flex cursor-pointer hover:cursor-pointer flex-row text-[17px] justify-between bg-transparent hover:bg-transparent text-black "><span>Favorites</span> <Plus /></Button>
+              <Button
+                onClick={() => alert("Favorites Button Clicked")}
+                className="flex cursor-pointer hover:cursor-pointer flex-row text-[17px] justify-between bg-transparent hover:bg-transparent text-black "
+              >
+                <span>Favorites</span> <Plus />
+              </Button>
               <span className="flex gap-3  text-sm">
-                <Circle  size={16} strokeWidth={3} absoluteStrokeWidth /> Health
+                <Circle size={16} strokeWidth={3} absoluteStrokeWidth /> Health
               </span>
               <span className="flex gap-3 text-sm">
-              <Circle size={16} color="#636363" strokeWidth={3} absoluteStrokeWidth />Finance
+                <Circle
+                  size={16}
+                  color="#636363"
+                  strokeWidth={3}
+                  absoluteStrokeWidth
+                />
+                Finance
               </span>
               <span className="flex gap-3 text-sm">
-                <Circle  size={16} color="#27AE60" strokeWidth={3} absoluteStrokeWidth /> Agriculture
+                <Circle
+                  size={16}
+                  color="#27AE60"
+                  strokeWidth={3}
+                  absoluteStrokeWidth
+                />{" "}
+                Agriculture
               </span>
               <span className="flex gap-3 text-sm">
-                <Circle  size={16} color="#F2994A" strokeWidth={3} absoluteStrokeWidth /> Health
+                <Circle
+                  size={16}
+                  color="#F2994A"
+                  strokeWidth={3}
+                  absoluteStrokeWidth
+                />{" "}
+                Health
               </span>
             </div>
           </nav>
@@ -168,15 +208,7 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-row gap-8 h-14 items-center border-t px-6 lg:h-[90px] lg:px-6">
-          <Avatar>
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <div className="flex flex-col gap-1 text-sm ">
-            <span className="font-semibold">Akta Analytics</span>
-            <span>aktaanalytics@gmail.com</span>
-          </div>
-        </div>
+        <UserProfileDropDown approveLogout={userAuthLogout} />
       </div>
     </div>
   );

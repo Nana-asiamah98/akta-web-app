@@ -10,20 +10,23 @@ import { Icons } from "../Icons";
 import Link from "next/link";
 import { Clipboard } from "lucide-react";
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
+  setPassword: (password: string) => void;
+  setUserName: (userName: string) => void;
+  setIsLoading: (status: boolean) => void;
+  isLoading: boolean | undefined;
+  onSubmit: (event: React.SyntheticEvent) => void;
+}
 
-export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-
-  async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault();
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }
-
+export function UserAuthForm({
+  className,
+  setPassword,
+  setUserName,
+  setIsLoading,
+  isLoading,
+  onSubmit,
+  ...props
+}: UserAuthFormProps) {
   return (
     <>
       <div className="relative flex w-full flex-col justify-center space-y-6 sm:w-[450px] ">
@@ -42,13 +45,16 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                   Email
                 </Label>
                 <Input
-                  id="email"
-                  placeholder="Email"
-                  type="email"
+                  id="username"
+                  placeholder="Username"
+                  type="text"
                   autoCapitalize="none"
-                  autoComplete="email"
+                  autoComplete="off"
                   autoCorrect="off"
                   disabled={isLoading}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setUserName(e.target.value)
+                  }
                 />
               </div>
               <div className="grid gap-1">
@@ -56,13 +62,16 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                   Email
                 </Label>
                 <Input
-                  id="email"
+                  id="password"
                   placeholder="Password"
                   type="password"
                   autoCapitalize="none"
-                  autoComplete="email"
+                  autoComplete="off"
                   autoCorrect="off"
                   disabled={isLoading}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setPassword(e.target.value)
+                  }
                 />
               </div>
               <div className="flex items-end justify-end">
@@ -70,7 +79,11 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                   Forgot Password?
                 </Link>
               </div>
-              <Button disabled={isLoading} className="bg-[#0D548A]">
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="bg-[#0D548A]"
+              >
                 {isLoading && (
                   <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                 )}
@@ -80,7 +93,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </form>
 
           <div className=" bg-[#F8F9FD] w-full h-24 flex justify-between p-5 m-auto items-center">
-            <Clipboard  className="w-4 h-4 md:w-10 md:h-10"/>
+            <Clipboard className="w-4 h-4 md:w-10 md:h-10" />
             <div className="flex flex-col space-y-2">
               <span className="text-[12px] md:text-sm">
                 Are you a respondent looking to answer a survey?
@@ -97,9 +110,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       </div>
       <div className="mt-20 bottom-0    mb-4 text-center text-black  dark:text-white">
         <span className="text-center">
-        Don’t have an account? {"  "}
+          Don’t have an account? {"  "}
           <Link href={`/register`} className="font-bold text-[#0D548A]">
-          Register
+            Register
           </Link>
         </span>
       </div>
