@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import { ChevronRight, Plus, type LucideIcon } from "lucide-react"
 
 import {
   Collapsible,
@@ -17,6 +17,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
+import { Button } from "./ui/button"
 
 export function NavMain({
   items,
@@ -34,7 +35,7 @@ export function NavMain({
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-[18px] font-semibold">My Projects</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
@@ -67,6 +68,16 @@ export function NavMain({
             </SidebarMenuItem>
           </Collapsible>
         ))}
+      </SidebarMenu>
+      <SidebarMenu>
+      <div className="flex items-start gap-4 text-[17px] text-[#0D548A]">
+              <Button
+                onClick={() => alert("Favorites Button Clicked")}
+                className="flex  gap-4 cursor-pointer hover:cursor-pointer flex-row text-[15px] justify-between bg-transparent hover:bg-transparent text-[#3f3f46b3] "
+              >
+                <Plus color="#0D548A" /> Add Project
+              </Button>
+            </div>
       </SidebarMenu>
     </SidebarGroup>
   )

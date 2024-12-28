@@ -1,8 +1,8 @@
 import React from "react";
 
-export const AktaLogo = () => {
+export const AktaLogo = (className : any) => {
   return (
-    <>
+    <div className={className}>
       <svg
         width="76"
         height="36"
@@ -84,6 +84,6 @@ export const AktaLogo = () => {
           fill="white"
         />
       </svg>
-    </>
+    </div>
   );
 };

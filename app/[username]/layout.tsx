@@ -1,15 +1,19 @@
+ 
 import Navbar from "@/components/custom/Navbar";
 import { AppSidebar } from "@/components/app-sidebar";
 import Sidebar from "@/components/custom/Sidebar";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@radix-ui/react-dropdown-menu";
+import { useState } from "react";
+
 
 const AuthenticatedLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+
   return (
     <SidebarProvider>
       <AppSidebar />

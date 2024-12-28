@@ -6,6 +6,7 @@ import {
   BookOpen,
   Bot,
   Command,
+  Folder,
   Frame,
   GalleryVerticalEnd,
   Map,
@@ -24,7 +25,11 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  SidebarSeparator,
 } from "@/components/ui/sidebar"
+import SidebarMenuIcon from "./custom/side-menu-options/app-side-menu-icon"
+import { Separator } from "./ui/separator"
+import SidebarCreateSurvey from "./custom/side-menu-options/app-side-menu-create-survey"
 
 // This is sample data.
 const data = {
@@ -52,90 +57,62 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Folder Name/Project Name",
       url: "#",
-      icon: SquareTerminal,
+      icon: Folder,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Politics",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Finance",
           url: "#",
         },
         {
-          title: "Settings",
+          title: "Health",
+          url: "#",
+        },
+        {
+          title: "Education",
+          url: "#",
+        },
+        {
+          title: "Law",
           url: "#",
         },
       ],
     },
     {
-      title: "Models",
+      title: "Folder Name/Project Name",
       url: "#",
-      icon: Bot,
+      icon: Folder,
+      isActive: true,
       items: [
         {
-          title: "Genesis",
+          title: "Politics",
           url: "#",
         },
         {
-          title: "Explorer",
+          title: "Finance",
           url: "#",
         },
         {
-          title: "Quantum",
+          title: "Health",
+          url: "#",
+        },
+        {
+          title: "Education",
+          url: "#",
+        },
+        {
+          title: "Law",
           url: "#",
         },
       ],
     },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
+   
   ],
   projects: [
     {
@@ -159,8 +136,10 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+      <SidebarHeader className="space-y-5 my-5">
+        <SidebarMenuIcon/>
+        <SidebarSeparator/>
+        <SidebarCreateSurvey/>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
