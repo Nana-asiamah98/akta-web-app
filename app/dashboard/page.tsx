@@ -1,15 +1,20 @@
-import Navbar from "@/components/custom/Navbar";
-import { AppSidebar } from "@/components/app-sidebar";
-import Sidebar from "@/components/custom/Sidebar";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { Separator } from "@radix-ui/react-dropdown-menu";
+import { AppSidebar } from "@/components/app-sidebar"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+import { Separator } from "@/components/ui/separator"
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar"
 
-const AuthenticatedLayout = ({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) => {
+export default function Page() {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -43,7 +48,5 @@ const AuthenticatedLayout = ({
         </div>
       </SidebarInset>
     </SidebarProvider>
-  );
-};
-
-export default AuthenticatedLayout;
+  )
+}
