@@ -69,8 +69,8 @@ export function NavMain({
           </Collapsible>
         ))}
       </SidebarMenu>
-      <SidebarMenu>
-      <div className="flex items-start gap-4 text-[17px] text-[#0D548A]">
+      <SidebarMenu className="group-data-[collapsible=icon]:hidden">
+      <div className="flex items-start gap-4 text-[17px] text-[#0D548A] ">
               <Button
                 onClick={() => alert("Favorites Button Clicked")}
                 className="flex  gap-4 cursor-pointer hover:cursor-pointer flex-row text-[15px] justify-between bg-transparent hover:bg-transparent text-[#3f3f46b3] "

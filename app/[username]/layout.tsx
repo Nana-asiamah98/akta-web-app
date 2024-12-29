@@ -6,6 +6,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { useState } from "react";
+import { Toaster } from "@/components/ui/toaster";
 
 
 const AuthenticatedLayout = ({
@@ -46,6 +47,7 @@ const AuthenticatedLayout = ({
           <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
       </SidebarInset>
+      <Toaster/>
     </SidebarProvider>
   );
 };

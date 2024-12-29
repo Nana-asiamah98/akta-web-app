@@ -15,9 +15,9 @@ const SidebarMenuIcon = () => {
     <div>
       <SidebarMenu>
         <SidebarMenuItem>
-          <SidebarMenuButton className="group-data-[collapsible=icon]:size-1">
+          <SidebarMenuButton className="group-data-[collapsible=icon]:size-0">
             <Link href="/" className="flex items-center gap-2 font-semibold">
-              <AktaLogo className="size-2" />
+              <AktaLogo className="group-data-[collapsible=icon]:size-0 size-5" />
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>

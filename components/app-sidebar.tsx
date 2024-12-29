@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
   BookOpen,
@@ -13,12 +13,12 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -26,10 +26,11 @@ import {
   SidebarHeader,
   SidebarRail,
   SidebarSeparator,
-} from "@/components/ui/sidebar"
-import SidebarMenuIcon from "./custom/side-menu-options/app-side-menu-icon"
-import { Separator } from "./ui/separator"
-import SidebarCreateSurvey from "./custom/side-menu-options/app-side-menu-create-survey"
+} from "@/components/ui/sidebar";
+import SidebarMenuIcon from "./custom/side-menu-options/app-side-menu-icon";
+import { Separator } from "./ui/separator";
+import SidebarCreateSurvey from "./custom/side-menu-options/app-side-menu-create-survey";
+import { SidebarFavouriteMenu } from "./custom/side-menu-options/app-side-menu-favourite";
 
 // This is sample data.
 const data = {
@@ -88,7 +89,7 @@ const data = {
       title: "Folder Name/Project Name",
       url: "#",
       icon: Folder,
-      isActive: true,
+      isActive: false,
       items: [
         {
           title: "Politics",
@@ -112,7 +113,23 @@ const data = {
         },
       ],
     },
-   
+  ],
+  favourites: [
+    {
+      name: "Health",
+      colorHexCode: "#0D548A",
+      url: "#",
+    },
+    {
+      name: "Finance",
+      colorHexCode: "#636363",
+      url: "#",
+    },
+    {
+      name: "Agriculture",
+      colorHexCode: "#27AE60",
+      url: "#",
+    },
   ],
   projects: [
     {
@@ -131,24 +148,25 @@ const data = {
       icon: Map,
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader className="space-y-5 my-5">
-        <SidebarMenuIcon/>
-        <SidebarSeparator/>
-        <SidebarCreateSurvey/>
+        <SidebarMenuIcon />
+        <SidebarSeparator />
+        <SidebarCreateSurvey />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <SidebarFavouriteMenu items={data.favourites}  />
+        {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
