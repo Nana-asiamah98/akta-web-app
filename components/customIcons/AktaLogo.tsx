@@ -1,11 +1,16 @@
 import React from "react";
 
-export const AktaLogo = (className : any) => {
+interface IAktaLogo {
+  classNames?: string;
+  width?: string;
+  height?: string;
+}
+export const AktaLogo = ({ classNames, width, height }: IAktaLogo) => {
   return (
-    <div className={className}>
+    <div className={classNames}>
       <svg
-        width="76"
-        height="36"
+        width={width ?? 76}
+        height={height ?? 36}
         viewBox="0 0 76 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
