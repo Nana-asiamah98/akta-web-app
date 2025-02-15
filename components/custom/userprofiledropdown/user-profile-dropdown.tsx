@@ -26,6 +26,7 @@ import {
   IKeycloakResponse,
   IKeycloakUserInfoResponse,
 } from "@/services/keycloak-services";
+import { stringAvatar } from "@/hooks/use-string-avatar";
 
 interface ILogout {
   approveLogout: (state: boolean) => void;
@@ -43,6 +44,7 @@ export const UserProfileDropDown = ({ approveLogout, userInfo }: ILogout) => {
                 <User />
               </AvatarFallback>
             </Avatar>
+            
             <div className="flex flex-col gap-1 text-sm ">
               <span className="font-semibold">
                 {userInfo?.name ?? "User Name"}

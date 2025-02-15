@@ -197,7 +197,7 @@ const Sidebar = () => {
             </div>
           </nav>
         </div>
-        <div className="flex flex-row   h-14 items-center  px-6 lg:h-[90px] lg:px-6">
+        <div className="flex flex-row  h-14 items-center  px-6 lg:h-[90px] lg:px-6">
           <div className="flex flex-col w-full space-y-6 mb-16">
             <div className="flex flex-row justify-between w-full">
               <div className=" flex justify-start gap-1">

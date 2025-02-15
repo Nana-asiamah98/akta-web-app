@@ -1,16 +1,12 @@
 "use client";
 import PageTitle from "@/components/custom/PageTitle";
 import { DashbardFolderCards } from "@/components/custom/dashboard/DashbardFolderCards";
+import { DashboardMinorCards } from "@/components/custom/dashboard/DashboardMinorCards";
+import { SurveyCards } from "@/components/custom/survey/SurveyCards";
 import { Card, CardContent } from "@/components/ui/card";
+import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  File,
-  Folder,
-  Tablet,
-  TabletIcon,
-  TabletsIcon,
-  TrendingUp,
-} from "lucide-react";
+import Image from "next/image";
 import {
   Label,
   PolarGrid,
@@ -18,16 +14,6 @@ import {
   RadialBar,
   RadialBarChart,
 } from "recharts";
-import {
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-import { DashboardMinorCards } from "@/components/custom/dashboard/DashboardMinorCards";
-import { SurveyCards } from "@/components/custom/survey/SurveyCards";
-import Image from "next/image";
 const chartData = [
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
 ];

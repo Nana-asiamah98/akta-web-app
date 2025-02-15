@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { ChevronRight, Plus, type LucideIcon } from "lucide-react"
+import { ChevronRight, Plus, type LucideIcon } from "lucide-react";
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -16,26 +16,35 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar"
-import { Button } from "./ui/button"
+} from "@/components/ui/sidebar";
+import { Button } from "./ui/button";
+import {
+  AlertDialog,
+  AlertDialogDescription,
+  AlertDialogTrigger,
+} from "@radix-ui/react-alert-dialog";
+import { AddProjectDialog } from "./custom/alert/add-project-dialog";
+
 
 export function NavMain({
   items,
 }: {
   items: {
-    title: string
-    url: string
-    icon?: LucideIcon
-    isActive?: boolean
+    title: string;
+    url: string;
+    icon?: LucideIcon;
+    isActive?: boolean;
     items?: {
-      title: string
-      url: string
-    }[]
-  }[]
+      title: string;
+      url: string;
+    }[];
+  }[];
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="text-[18px] font-semibold">My Projects</SidebarGroupLabel>
+      <SidebarGroupLabel className="text-[18px] font-semibold">
+        My Projects
+      </SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
@@ -69,16 +78,11 @@ export function NavMain({
           </Collapsible>
         ))}
       </SidebarMenu>
-      <SidebarMenu className="group-data-[collapsible=icon]:hidden">
-      <div className="flex items-start gap-4 text-[17px] text-[#0D548A] ">
-              <Button
-                onClick={() => alert("Favorites Button Clicked")}
-                className="flex  gap-4 cursor-pointer hover:cursor-pointer flex-row text-[15px] justify-between bg-transparent hover:bg-transparent text-[#3f3f46b3] "
-              >
-                <Plus color="#0D548A" /> Add Project
-              </Button>
-            </div>
+      <SidebarMenu>
+        <AddProjectDialog/>
+
+        {/* <div className="flex items-start gap-4 text-[17px] text-[#0D548A] "></div> */}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }

@@ -9,6 +9,7 @@ import { AktaLogo } from "@/components/customIcons/AktaLogo";
 import { NEXT_STATE, PREVIOUS_STATE } from "@/utils/AppConstants";
 import { CircleArrowLeft, CircleArrowRight } from "lucide-react";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface IJumbotron {
   key: string;
@@ -43,13 +44,14 @@ export default function AuthenticatedLogin() {
   const [password, setPassword] = useState<string>("");
   const [counter, setCounter] = useState(0);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const route = useRouter();
 
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     setTimeout(() => {
-      signIn("credentials", {
+      /* signIn("credentials", {
         username: username,
         password: password,
         redirect: true,
@@ -61,8 +63,10 @@ export default function AuthenticatedLogin() {
         } else {
           console.log("Failed To Login", { error, status });
         }
-      });
+      }); */
+      
       setIsLoading(false);
+      route.push(`/dummy`)
     }, 3000);
   };
 
